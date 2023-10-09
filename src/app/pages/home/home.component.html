@@ -1,2 +1,26 @@
-<app-navbar></app-navbar>
-<p class="text-red-500">home works!</p>
+<div class="px-32 py-6 grid md:grid-cols-3 gap-6">
+  <div *ngFor="let video of videos">
+    <div class="group hover:bg-graybg flex flex-col">
+      <img src="{{ video.previewUrl }}" class="object-cover h-56 w-full" />
+      <div class="px-3 pt-2 pb-3">
+        <h1>{{ video.title }}</h1>
+        <div class="flex">
+          <div class="flex-1 text-graycaption">
+            {{ video.createdDate | date : "dd/mm/yy" }}
+          </div>
+          <div class="flex justify-end items-center">
+            <img
+              src="{{ video.author.pictureUrl }}"
+              class="w-6 h-6 rounded justify-center items-center"
+            />
+            <p
+              class="pl-2 text-sm text-graycaption justify-center items-center"
+            >
+              {{ video.author.name }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

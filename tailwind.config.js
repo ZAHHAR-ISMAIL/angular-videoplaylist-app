@@ -5,6 +5,11 @@ module.exports = {
     extend: {
       colors: {
         darkblue: "#12123D",
+        graybg: "#EFEFEF",
+        grayborder: "#CCCCCC",
+        grayobject: "#12123D",
+        graycaption: "#8D8D8D",
+        graytitle: "#171717",
       },
     },
   },
