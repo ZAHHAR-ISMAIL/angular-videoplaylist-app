@@ -6,7 +6,7 @@ import { VideoService } from 'src/app/Services/video.service';
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
-  videos: any[] = []; // Replace with your video data type
+  videos: any[] = []; // video data
 
   constructor(private videoService: VideoService) {}
 

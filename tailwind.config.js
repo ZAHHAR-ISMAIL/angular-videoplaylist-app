@@ -4,12 +4,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        darkblue: "#12123D",
+        white: "#ffffff",
+        navbar: "#12123D",
         graybg: "#EFEFEF",
-        grayborder: "#CCCCCC",
-        grayobject: "#12123D",
-        graycaption: "#8D8D8D",
-        graytitle: "#171717",
+        border: "#CCCCCC",
+        object: "#12123D",
+        caption: "#8D8D8D",
+        title: "#171717",
       },
     },
   },
