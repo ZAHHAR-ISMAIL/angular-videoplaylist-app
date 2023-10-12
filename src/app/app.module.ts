@@ -9,6 +9,7 @@ import { VideoDetailComponent } from './pages/video-detail/video-detail.componen
 import { VideoCardComponent } from './components/video-card/video-card.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ReactionButtonComponent } from './components/buttons/reaction-button/reaction-button.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     VideoCardComponent,
     NavbarComponent,
     ProfileComponent,
+    ReactionButtonComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
