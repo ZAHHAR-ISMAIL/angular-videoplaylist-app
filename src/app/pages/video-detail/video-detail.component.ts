@@ -8,9 +8,6 @@ import { VideoService } from 'src/app/Services/video.service';
   templateUrl: './video-detail.component.html',
 })
 export class VideoDetailComponent {
-  // @ViewChild('videoPlayer')
-  // videoplayer!: ElementRef;
-
   videoId!: string;
   videoUrl!: string;
   videoTitle!: string;

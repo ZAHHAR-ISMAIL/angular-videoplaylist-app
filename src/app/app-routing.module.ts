@@ -7,7 +7,7 @@ import { LayoutComponent } from './layout/layout/layout.component';
 const routes: Routes = [
   {
     path: 'videos',
-    component: LayoutComponent, // This component includes the NavbarComponent
+    component: LayoutComponent, // This Layout component includes the NavbarComponent
     children: [
       { path: '', component: HomeComponent }, // Default video list component
       { path: ':videoId', component: VideoDetailComponent }, // Video detail component
