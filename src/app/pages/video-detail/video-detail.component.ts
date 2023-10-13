@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { RouteService } from 'src/app/Services/route.service';
 import { VideoService } from 'src/app/Services/video.service';
 
 @Component({
@@ -18,10 +19,14 @@ export class VideoDetailComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private videoService: VideoService
+    private videoService: VideoService,
+    private routeService: RouteService
   ) {}
 
   ngOnInit(): void {
+    // Update service state this is video details page
+    this.routeService.setIsVideoDetailPage(true);
+
     // Get the videoId from the route parameters
     this.route.params.subscribe((params) => {
       this.videoId = params['videoId'];

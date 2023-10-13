@@ -2,17 +2,20 @@
   <h1 class="items-center text-2xl font-bold">video-detail works!</h1>
   <video [src]="videoUrl" controls class="pt-6 w-full"></video>
 
-  <div class="pt-4 flex flex-row gap-4">
-    <app-reaction-button
-      label="Snapshot"
-      icon="assets/camera-icon.svg"
-      class="flex"
-    ></app-reaction-button>
-    <app-reaction-button
-      label="Star"
-      icon="assets/star-icon.svg"
-      class="flex-1"
-    ></app-reaction-button>
+  <div class="pt-4 flex flex-row">
+    <!-- Video Reaction Buttons -->
+    <div class="flex flex-1 gap-4">
+      <app-reaction-button
+        label="Snapshot"
+        icon="assets/camera-icon.svg"
+      ></app-reaction-button>
+      <app-reaction-button
+        label="Star"
+        icon="assets/star-icon.svg"
+      ></app-reaction-button>
+    </div>
+
+    <!-- Video author -->
     <app-reaction-button
       label="Star"
       icon="assets/star-icon.svg"

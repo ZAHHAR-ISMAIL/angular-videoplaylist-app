@@ -1,7 +1,15 @@
 <div class="flex items-center h-20 bg-navbar px-10">
-  <div class="flex-1 text-white">
+  <!-- Display logo on video list page -->
+  <div *ngIf="!isVideoDetailsPage" class="flex-1 text-white">
     <img src="assets/logo.svg" />
   </div>
+
+  <!-- Display Back button on video details page -->
+  <div *ngIf="isVideoDetailsPage" class="flex-1">
+    <button [routerLink]="['/videos']" class="text-white">Back</button>
+  </div>
+
+  <!-- Current user profile  -->
   <div class="justify-end">
     <app-profile></app-profile>
   </div>
