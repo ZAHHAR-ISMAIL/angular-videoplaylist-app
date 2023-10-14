@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RouteService } from 'src/app/Services/route.service';
 import { VideoService } from 'src/app/Services/video.service';
+import { Video } from 'src/app/models/video.model';
 
 @Component({
   selector: 'app-video-detail',
@@ -9,10 +10,7 @@ import { VideoService } from 'src/app/Services/video.service';
 })
 export class VideoDetailComponent {
   videoId!: string;
-  videoUrl!: string;
-  videoTitle!: string;
-  videoDescription!: string;
-  authorId!: string;
+  video!: Video;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,12 +27,12 @@ export class VideoDetailComponent {
       this.videoId = params['videoId'];
 
       // Fetch video details using the videoId
-      this.videoService.getVideoDetails(this.videoId).subscribe((data: any) => {
-        this.videoUrl = data.url;
-        this.videoTitle = data.title;
-        this.videoDescription = data.description;
-        this.authorId = data.author.id;
-      });
+      this.videoService
+        .getVideoDetails(this.videoId)
+        .subscribe((video: Video) => {
+          this.video = video;
+          console.log(this.video.author);
+        });
     });
   }
 

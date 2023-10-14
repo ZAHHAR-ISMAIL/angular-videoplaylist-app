@@ -11,6 +11,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ReactionButtonComponent } from './components/buttons/reaction-button/reaction-button.component';
 import { LayoutComponent } from './layout/layout/layout.component';
+import { VideoAuthorComponent } from './components/video-author/video-author.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { LayoutComponent } from './layout/layout/layout.component';
     ProfileComponent,
     ReactionButtonComponent,
     LayoutComponent,
+    VideoAuthorComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

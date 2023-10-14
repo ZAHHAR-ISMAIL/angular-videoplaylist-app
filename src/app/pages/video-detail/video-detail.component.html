@@ -1,6 +1,6 @@
 <div class="pt-14 px-11 lg:px-24 xl:px-80 flex flex-col">
   <h1 class="items-center text-2xl font-bold">video-detail works!</h1>
-  <video [src]="videoUrl" controls class="pt-6 w-full"></video>
+  <video [src]="video.url" controls class="pt-6 w-full"></video>
 
   <div class="pt-4 flex flex-row">
     <!-- Video Reaction Buttons -->
@@ -16,10 +16,6 @@
     </div>
 
     <!-- Video author -->
-    <app-reaction-button
-      label="Star"
-      icon="assets/star-icon.svg"
-      class="justify-end"
-    ></app-reaction-button>
+    <app-video-author [author]="video.author"></app-video-author>
   </div>
 </div>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Video } from '../models/video.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,9 +18,9 @@ export class VideoService {
   }
 
   // Fetch video details by videoId
-  getVideoDetails(videoId: string): Observable<any> {
+  getVideoDetails(videoId: string): Observable<Video> {
     const url = `${this.apiUrl}/videos/${videoId}`;
-    return this.http.get<any>(url);
+    return this.http.get<Video>(url);
   }
 
   // Update video title by videoId

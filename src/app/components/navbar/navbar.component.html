@@ -6,7 +6,9 @@
 
   <!-- Display Back button on video details page -->
   <div *ngIf="isVideoDetailsPage" class="flex-1">
-    <button [routerLink]="['/videos']" class="text-white">Back</button>
+    <button [routerLink]="['/videos']" class="flex flex-row text-white">
+      <img src="assets/back-icon.svg" class="pr-4 h-6" />Back
+    </button>
   </div>
 
   <!-- Current user profile  -->

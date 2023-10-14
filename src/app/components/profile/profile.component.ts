@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/Services/user.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent {
-  currentUser: any; // add model
+  currentUser!: User; // add model
 
   constructor(private userService: UserService) {}
 

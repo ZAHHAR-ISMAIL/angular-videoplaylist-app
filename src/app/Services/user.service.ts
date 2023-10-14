@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,20 +13,15 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   // Getter for the current user's data
-  get currentUser$(): Observable<any> {
+  get currentUser$(): Observable<User> {
     return this.currentUserSubject.asObservable();
   }
 
-  // fetch the current user's data from the API and cache it
+  // Fetch the current user's data from the API and cache it
   fetchCurrentUser(): void {
-    this.http.get<any>(`${this.apiUrl}/users/self`).subscribe(
-      (user) => {
-        this.currentUserSubject.next(user);
-      },
-      (error) => {
-        // Handle error if API request fails
-        console.error('Error fetching current user:', error);
-      }
-    );
+    this.http.get<User>(`${this.apiUrl}/users/self`).subscribe({
+      next: (user: User) => this.currentUserSubject.next(user),
+      error: (e) => console.error(e),
+    });
   }
 }
