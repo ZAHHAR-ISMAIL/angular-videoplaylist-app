@@ -12,6 +12,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ReactionButtonComponent } from './components/buttons/reaction-button/reaction-button.component';
 import { LayoutComponent } from './layout/layout/layout.component';
 import { VideoAuthorComponent } from './components/video-author/video-author.component';
+import { VideoTitleComponent } from './components/video-title/video-title.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { VideoAuthorComponent } from './components/video-author/video-author.com
     ReactionButtonComponent,
     LayoutComponent,
     VideoAuthorComponent,
+    VideoTitleComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

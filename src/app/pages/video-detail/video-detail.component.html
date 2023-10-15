@@ -1,5 +1,8 @@
 <div class="pt-14 px-11 lg:px-24 xl:px-80 flex flex-col">
-  <h1 class="items-center text-2xl font-bold">video-detail works!</h1>
+  <app-video-title
+    [authorId]="video.author.id"
+    [videoTitle]="video.title"
+  ></app-video-title>
   <video [src]="video.url" controls class="pt-6 w-full"></video>
 
   <div class="pt-4 flex flex-row">
