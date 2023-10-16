@@ -1,23 +1,25 @@
-<div class="pt-14 px-11 lg:px-24 xl:px-80 flex flex-col">
+<div class="pt-14 px-4 lg:px-24 xl:px-80 flex flex-col">
   <app-video-title
-    [authorId]="video.author.id"
+    [videoId]="video.id"
     [videoTitle]="video.title"
+    [authorId]="video.author.id"
   ></app-video-title>
   <video [src]="video.url" controls class="pt-6 w-full"></video>
 
-  <div class="pt-4 flex flex-row">
+  <div class="pt-4 flex items-center">
     <!-- Video Reaction Buttons -->
-    <div class="flex flex-1 gap-4">
+    <div class="flex-1">
       <app-reaction-button
         label="Snapshot"
         icon="assets/camera-icon.svg"
+        class="m-2"
       ></app-reaction-button>
       <app-reaction-button
         label="Star"
         icon="assets/star-icon.svg"
+        class="m-2"
       ></app-reaction-button>
     </div>
-
     <!-- Video author -->
     <app-video-author [author]="video.author"></app-video-author>
   </div>

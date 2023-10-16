@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Video } from '../models/video.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class VideoService {
-  private apiUrl = 'http://localhost:3000/api'; // Replace with your API endpoint
+  private apiUrl = environment.apiUrl; // Replace with your API endpoint
 
   constructor(private http: HttpClient) {}
 
