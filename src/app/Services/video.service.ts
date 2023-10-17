@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Video } from '../models/video.model';
 import { environment } from 'src/environments/environment';
+import { Video } from '../models/video.model';
 import { VideoPreview } from '../models/video-preview.model';
 
 @Injectable({
