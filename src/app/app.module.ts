@@ -10,7 +10,7 @@ import { VideoCardComponent } from './components/video-card/video-card.component
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ReactionButtonComponent } from './components/buttons/reaction-button/reaction-button.component';
-import { LayoutComponent } from './layout/layout/layout.component';
+import { LayoutComponent } from './layouts/layout/layout.component';
 import { VideoAuthorComponent } from './components/video-author/video-author.component';
 import { VideoTitleComponent } from './components/video-title/video-title.component';
 import { FormsModule } from '@angular/forms';
