@@ -13,6 +13,7 @@ import { ReactionButtonComponent } from './components/buttons/reaction-button/re
 import { LayoutComponent } from './layout/layout/layout.component';
 import { VideoAuthorComponent } from './components/video-author/video-author.component';
 import { VideoTitleComponent } from './components/video-title/video-title.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { VideoTitleComponent } from './components/video-title/video-title.compon
     VideoAuthorComponent,
     VideoTitleComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

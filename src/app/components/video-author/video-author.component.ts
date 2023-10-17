@@ -6,6 +6,5 @@ import { Author } from 'src/app/models/author.model';
   templateUrl: './video-author.component.html',
 })
 export class VideoAuthorComponent {
-  @Input()
-  author!: Author;
+  @Input() author!: Author;
 }

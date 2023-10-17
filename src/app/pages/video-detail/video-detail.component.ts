@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RouteService } from 'src/app/Services/route.service';
 import { VideoService } from 'src/app/Services/video.service';
@@ -19,7 +19,7 @@ export class VideoDetailComponent {
   ) {}
 
   ngOnInit(): void {
-    // Update service state this is video details page
+    // Update service state: this is video details page
     this.routeService.setIsVideoDetailPage(true);
 
     // Get the videoId from the route parameters
@@ -27,12 +27,12 @@ export class VideoDetailComponent {
       this.videoId = params['videoId'];
 
       // Fetch video details using the videoId
-      this.videoService
-        .getVideoDetails(this.videoId)
-        .subscribe((video: Video) => {
+      this.videoService.getVideoDetails(this.videoId).subscribe({
+        next: (video: Video) => {
           this.video = video;
-          console.log(this.video.author);
-        });
+        },
+        error: (err) => console.log(err),
+      });
     });
   }
 

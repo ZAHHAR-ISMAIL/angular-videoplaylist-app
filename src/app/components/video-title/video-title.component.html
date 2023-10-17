@@ -4,15 +4,29 @@
     <h1 class="text-2xl font-bold">{{ videoTitle }}</h1>
   </div>
 
-  <!-- Display the video in Input field -->
-  <div *ngIf="isVideoAuthor" class="flex-1">
-    <button [routerLink]="['/videos']" class="flex flex-row text-white">
+  <!-- Display the Editable video title -->
+  <div *ngIf="isVideoAuthor" class="flex flex-row gap-4">
+    <!-- Editable video title -->
+    <input
+      [(ngModel)]="editedVideoTitle"
+      (input)="onInputChange()"
+      class="border-2 border-solid border-border focus:border-title rounded-lg px-4 p-2 w-full"
+    />
+
+    <!-- Save button to edit title (clickable on editing mode) -->
+    <button
+      *ngIf="isEditable"
+      (click)="saveVideoTitle()"
+      class="w-24 bg-check text-white p-2 rounded-lg"
+    >
       Save
     </button>
-  </div>
 
-  <!-- Current user profile  -->
-  <div class="justify-end">
-    <app-profile></app-profile>
+    <button
+      *ngIf="!isEditable"
+      class="w-24 bg-check text-white p-2 rounded-lg opacity-30 cursor-not-allowed"
+    >
+      Save
+    </button>
   </div>
 </div>

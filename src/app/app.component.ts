@@ -6,13 +6,6 @@ import { UserService } from './Services/user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'video-box-app';
-
-  constructor(private userService: UserService) {}
-
-  ngOnInit(): void {
-    // Initial fetch of user data when the app starts
-    this.userService.fetchCurrentUser();
-  }
 }
