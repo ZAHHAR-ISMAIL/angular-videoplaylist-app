@@ -11,9 +11,10 @@ export class VideoTitleComponent {
   @Input() videoTitle!: string;
   @Input() authorId!: string;
 
-  // Add these properties for editing
+  // these properties for editing title
   editedVideoTitle!: string;
   isEditable: boolean = false;
+  // this proprity to check if user same is author
   isVideoAuthor: boolean = false;
 
   constructor(
@@ -21,7 +22,7 @@ export class VideoTitleComponent {
     private videoService: VideoService
   ) {}
   ngOnInit(): void {
-    // Check if current user is video author
+    // Check if current user is same video author
     this.userService.currentUser$.subscribe((user) => {
       if (user.id === this.authorId) {
         this.isVideoAuthor = true;
@@ -30,10 +31,11 @@ export class VideoTitleComponent {
     });
   }
 
+  // Check input value if OK to save
   onInputChange() {
     // Check if Input not empty and different than current Title
     if (this.editedVideoTitle && this.editedVideoTitle != this.videoTitle)
-      this.isEditable = true;
+      this.isEditable = true; // Enable editing mode (save button clickable)
     else this.isEditable = false;
   }
 
@@ -44,11 +46,12 @@ export class VideoTitleComponent {
       .updateVideoTitle(this.videoId, this.editedVideoTitle)
       .subscribe({
         next: () => {
-          // Update the original video title and exit editing mode
+          // Update the original video title and exit editing mode (save button disabled)
           this.videoTitle = this.editedVideoTitle;
           this.isEditable = false;
         },
         error: (err) => {
+          // Handle error
           console.log(err);
         },
       });

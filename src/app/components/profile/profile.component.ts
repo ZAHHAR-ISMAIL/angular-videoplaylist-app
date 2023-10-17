@@ -7,7 +7,7 @@ import { User } from 'src/app/models/user.model';
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent {
-  currentUser!: User; // add model
+  currentUser!: User;
 
   constructor(private userService: UserService) {}
 
@@ -15,7 +15,6 @@ export class ProfileComponent {
     // Subscribe to the current user's data
     this.userService.currentUser$.subscribe((user) => {
       this.currentUser = user;
-      console.log(this.currentUser);
     });
   }
 }

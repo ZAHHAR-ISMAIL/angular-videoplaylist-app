@@ -1,28 +1,6 @@
 <div class="px-4 xl:px-32 py-6 grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+  <!-- List the video cards -->
   <div *ngFor="let video of videos">
-    <div class="group hover:bg-graybg flex flex-col">
-      <a [routerLink]="['/videos', video.id]">
-        <img src="{{ video.previewUrl }}" class="object-cover h-56 w-full" />
-        <div class="px-3 pt-2 pb-3">
-          <h1 class="truncate">{{ video.title }}</h1>
-          <div class="flex">
-            <div class="flex-1 text-caption">
-              {{ video.createdDate | date : "dd/mm/yy" }}
-            </div>
-            <div class="flex justify-end items-center">
-              <img
-                src="{{ video.author.pictureUrl }}"
-                class="w-6 h-6 rounded-full justify-center items-center"
-              />
-              <p
-                class="pl-2 text-sm capitalize text-caption justify-center items-center"
-              >
-                {{ video.author.name }}
-              </p>
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
+    <app-video-card [video]="video"></app-video-card>
   </div>
 </div>

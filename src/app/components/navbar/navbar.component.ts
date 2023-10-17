@@ -11,10 +11,9 @@ export class NavbarComponent implements OnInit {
   constructor(private routeService: RouteService) {}
 
   ngOnInit() {
-    // Check if the page is video detals page
+    // Check if the page is video details page
     this.routeService.getIsVideoDetailsPage().subscribe((value) => {
       this.isVideoDetailsPage = value;
-      console.log(this.isVideoDetailsPage);
     });
   }
 }

@@ -1,9 +1,11 @@
 <div class="pt-14 px-4 lg:px-24 xl:px-80 flex flex-col">
+  <!-- Video Title  -->
   <app-video-title
     [videoId]="video.id"
     [videoTitle]="video.title"
     [authorId]="video.author.id"
   ></app-video-title>
+  <!-- Video Player -->
   <video [src]="video.url" controls class="pt-6 w-full"></video>
 
   <div class="pt-4 flex items-center">

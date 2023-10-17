@@ -3,22 +3,23 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Video } from '../models/video.model';
 import { environment } from 'src/environments/environment';
+import { VideoPreview } from '../models/video-preview.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class VideoService {
-  private apiUrl = environment.apiUrl; // Replace with your API endpoint
+  private apiUrl = environment.apiUrl; // API endpoint
 
   constructor(private http: HttpClient) {}
 
   // Fetch the list of videos
-  getVideos(): Observable<any[]> {
+  getVideos(): Observable<VideoPreview[]> {
     const url = `${this.apiUrl}/videos`;
-    return this.http.get<any[]>(url);
+    return this.http.get<VideoPreview[]>(url);
   }
 
-  // Fetch video details by videoId
+  // Fetch video details by id
   getVideoDetails(videoId: string): Observable<Video> {
     const url = `${this.apiUrl}/videos/${videoId}`;
     return this.http.get<Video>(url);
