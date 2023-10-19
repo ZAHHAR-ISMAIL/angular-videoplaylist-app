@@ -8,21 +8,29 @@
   <!-- Video Player -->
   <video [src]="video.url" controls class="pt-6 w-full"></video>
 
+  <!-- Video Reaction Buttons -->
   <div class="pt-4 flex items-center">
-    <!-- Video Reaction Buttons -->
     <div class="flex-1">
       <app-reaction-button
         label="Snapshot"
         icon="assets/camera-icon.svg"
-        class="m-2"
+        class="mr-2 my-2"
       ></app-reaction-button>
       <app-reaction-button
         label="Star"
         icon="assets/star-icon.svg"
-        class="m-2"
+        class="mr-2 my-2"
       ></app-reaction-button>
     </div>
     <!-- Video author -->
     <app-video-author [author]="video.author"></app-video-author>
+  </div>
+
+  <!-- List the video Reactions -->
+  <div class="mt-8">
+    <p class="pb-3 text-body font-bold">Reactions</p>
+    <div *ngFor="let reaction of videoReactions">
+      <app-video-reaction [reaction]="reaction"></app-video-reaction>
+    </div>
   </div>
 </div>

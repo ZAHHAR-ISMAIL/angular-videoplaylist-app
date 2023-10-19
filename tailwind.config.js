@@ -13,6 +13,7 @@ module.exports = {
         caption: "#8D8D8D",
         title: "#171717",
         check: "#353392",
+        body: "#414141",
       },
     },
   },

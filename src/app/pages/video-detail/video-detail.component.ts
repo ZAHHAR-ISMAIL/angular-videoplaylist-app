@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RouteService } from 'src/app/Services/route.service';
 import { VideoService } from 'src/app/Services/video.service';
+import { VideoReaction } from 'src/app/models/video-reaction.model';
 import { Video } from 'src/app/models/video.model';
 
 @Component({
@@ -11,6 +12,7 @@ import { Video } from 'src/app/models/video.model';
 export class VideoDetailComponent {
   videoId!: string;
   video!: Video;
+  videoReactions!: VideoReaction[];
 
   constructor(
     private route: ActivatedRoute,
@@ -33,6 +35,14 @@ export class VideoDetailComponent {
         },
         error: (err) => console.log(err),
       });
+    });
+
+    this.videoService.getVideoReactions(this.videoId).subscribe({
+      next: (reactions: VideoReaction[]) => {
+        this.videoReactions = reactions;
+        console.log(this.videoReactions);
+      },
+      error: (err) => console.log(err),
     });
   }
 
