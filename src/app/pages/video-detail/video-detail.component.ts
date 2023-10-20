@@ -46,6 +46,10 @@ export class VideoDetailComponent {
     });
   }
 
+  GoToFrame(reaction: VideoReaction) {
+    console.log(reaction.timeframe);
+  }
+
   // toggleVideo(event: any) {
   //   this.videoplayer.nativeElement.play();
   // }

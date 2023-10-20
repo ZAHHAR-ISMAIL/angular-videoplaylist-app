@@ -1,3 +1,22 @@
-<div class="px-4 flex flex-row">
+<div
+  *ngIf="reaction.type == 'snapshot'"
+  class="pl-4 pr-2 h-16 flex flex-row items-center hover:bg-graybg"
+>
   <app-camera-icon fill="fill-caption" class=""></app-camera-icon>
+  <p class="px-5">{{ reaction.timeframe }}</p>
+  <p class="text-caption">{{ reaction.author.name }} created a snapshot</p>
+  <p class="pl-4 flex-1 text-caption">
+    ({{ reaction.createdDate | date : "dd/mm/yy" }} )
+  </p>
+  <img [src]="reaction.imageUrl" class="w-24 h-14 rounded-md justify-end" />
+</div>
+
+<div
+  *ngIf="reaction.type == 'star'"
+  class="px-4 h-16 flex flex-row items-center"
+>
+  <app-star-icon fill="fill-caption" class=""></app-star-icon>
+  <p class="px-5">{{ reaction.timeframe }}</p>
+  <p>{{ reaction.author.name }} created a snapshot</p>
+  <p class="flex-1">{{ reaction.postedDate }}</p>
 </div>

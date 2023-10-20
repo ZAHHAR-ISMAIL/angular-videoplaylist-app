@@ -27,10 +27,14 @@
   </div>
 
   <!-- List the video Reactions -->
-  <div class="mt-8">
+  <div class="my-8">
     <p class="pb-3 text-body font-bold">Reactions</p>
     <div *ngFor="let reaction of videoReactions">
-      <app-video-reaction [reaction]="reaction"></app-video-reaction>
+      <app-video-reaction
+        [reaction]="reaction"
+        (click)="GoToFrame(reaction)"
+        class="cursor-pointer"
+      ></app-video-reaction>
     </div>
   </div>
 </div>

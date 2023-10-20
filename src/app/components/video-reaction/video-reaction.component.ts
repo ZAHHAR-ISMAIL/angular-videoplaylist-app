@@ -7,4 +7,8 @@ import { VideoReaction } from 'src/app/models/video-reaction.model';
 })
 export class VideoReactionComponent {
   @Input() reaction!: VideoReaction;
+
+  goTimeframe(reaction: VideoReaction) {
+    console.log(reaction.timeframe);
+  }
 }
