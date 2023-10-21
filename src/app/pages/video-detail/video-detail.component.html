@@ -6,12 +6,19 @@
     [authorId]="video.author.id"
   ></app-video-title>
   <!-- Video Player -->
-  <video [src]="video.url" controls class="pt-6 w-full"></video>
+  <video
+    #videoPlayer
+    crossOrigin="anonymous"
+    [src]="video.url"
+    controls
+    class="pt-6 w-full"
+  ></video>
 
   <!-- Video Reaction Buttons -->
   <div class="pt-4 flex items-center">
     <div class="flex-1">
       <app-reaction-button
+        (click)="createSnapshotReaction()"
         label="Snapshot"
         icon="assets/camera-icon.svg"
         class="mr-2 my-2"

@@ -38,4 +38,32 @@ export class VideoService {
     const url = `${this.apiUrl}/videos/${videoId}/reactions`;
     return this.http.get<VideoReaction[]>(url);
   }
+
+  addStarReaction(videoId: string, timeframe: number): Observable<any> {
+    const reactionData = {
+      videoId: videoId,
+      type: 'star',
+      timeframe: timeframe,
+    };
+    return this.addReaction(videoId, reactionData);
+  }
+
+  addSnapshotReaction(
+    videoId: string,
+    timeframe: number,
+    dataUri: string
+  ): Observable<any> {
+    const reactionData = {
+      videoId: videoId,
+      type: 'snapshot',
+      timeframe: timeframe,
+      dataUri: dataUri,
+    };
+    return this.addReaction(videoId, reactionData);
+  }
+
+  addReaction(videoId: string, reactionData: any): Observable<any> {
+    const url = `${this.apiUrl}/videos/${videoId}/reactions`;
+    return this.http.post(url, reactionData);
+  }
 }
