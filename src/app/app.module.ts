@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { VideoReactionComponent } from './components/video-reaction/video-reaction.component';
 import { CameraIconComponent } from './components/ui/icons/camera-icon/camera-icon.component';
 import { StarIconComponent } from './components/ui/icons/star-icon/star-icon.component';
+import { TimeframeFormatPipe } from './pipes/timeframe-format.pipe';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { StarIconComponent } from './components/ui/icons/star-icon/star-icon.com
     VideoReactionComponent,
     CameraIconComponent,
     StarIconComponent,
+    TimeframeFormatPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

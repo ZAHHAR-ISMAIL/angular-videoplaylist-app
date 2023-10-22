@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RouteService } from 'src/app/Services/route.service';
 import { VideoService } from 'src/app/Services/video.service';
+import { Author } from 'src/app/models/author.model';
 import { VideoReaction } from 'src/app/models/video-reaction.model';
 import { Video } from 'src/app/models/video.model';
 
@@ -14,7 +15,9 @@ export class VideoDetailComponent {
   private videoPlayer!: ElementRef;
 
   videoId!: string;
+  // video: Video = { author: {} } as Video;
   video!: Video;
+
   videoReactions!: VideoReaction[];
 
   constructor(
@@ -35,6 +38,7 @@ export class VideoDetailComponent {
       this.videoService.getVideoDetails(this.videoId).subscribe({
         next: (video: Video) => {
           this.video = video;
+          console.log(video);
         },
         error: (err) => console.log(err),
       });
@@ -43,40 +47,53 @@ export class VideoDetailComponent {
     this.fetchVideoReactions();
   }
 
+  // Fetch List of the video Reactions
   fetchVideoReactions() {
     this.videoService.getVideoReactions(this.videoId).subscribe({
       next: (reactions: VideoReaction[]) => {
-        this.videoReactions = reactions;
+        // Sort the reactions by postedDate in descending order (newest first)
+        this.videoReactions = reactions.sort((a, b) => {
+          const dateA = a.createdDate || a.postedDate;
+          const dateB = b.createdDate || b.postedDate;
+
+          // Convert the date strings to Date objects and explicitly cast to number
+          return +new Date(dateB) - +new Date(dateA);
+        });
+
         console.log(this.videoReactions);
+      },
+      // Handle Error
+      error: (err) => console.log(err),
+    });
+  }
+
+  // Create Star Reaction
+  createStarReaction(): void {
+    const video = this.videoPlayer.nativeElement;
+    // Get the current time of the video
+    const currentTime = video.currentTime;
+
+    // Make a POST request to save the Snapshot reaction
+    this.videoService.addStarReaction(this.videoId, currentTime).subscribe({
+      next: () => {
+        this.fetchVideoReactions();
       },
       error: (err) => console.log(err),
     });
   }
 
+  // Create Snapshot Reaction
   createSnapshotReaction(): void {
     const video = this.videoPlayer.nativeElement;
-
     // Get the current time of the video
     const currentTime = video.currentTime;
+    // Get frame Image as a Base64
+    const imageBase64Data = this.CaptureFrameImage(video);
 
-    // Create a canvas element to draw the screenshot on
-    const canvas = document.createElement('canvas');
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-
-    // Draw the current frame of the video on the canvas
-    const context = canvas.getContext('2d');
-    if (context) {
-      context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-      // Convert the canvas content to base64 image data (PNG format)
-      const screenshotData = canvas.toDataURL('image/png');
-
-      // Now, screenshotDataUrl contains the screenshot of the video as base64 image data.
-      console.log('Screenshot as base64:', screenshotData);
-
+    if (imageBase64Data) {
+      // Make a POST request to save the Snapshot reaction
       this.videoService
-        .addSnapshotReaction(this.videoId, currentTime, screenshotData)
+        .addSnapshotReaction(this.videoId, currentTime, imageBase64Data)
         .subscribe({
           next: () => {
             this.fetchVideoReactions();
@@ -84,42 +101,13 @@ export class VideoDetailComponent {
           error: (err) => console.log(err),
         });
     } else {
-      console.error('Failed to capture screenshot: getContext returned null.');
+      // Handle Error
+      console.error('Failed to capture screenshot');
     }
-
-    // // Get the video player element (you may need to use ViewChild to reference the video player element)
-    // const videoPlayer = document.getElementById(
-    //   'video-element'
-    // ) as HTMLVideoElement; /* Get a reference to your video player element */
-
-    // // Capture the current time of the video
-    // const currentTime = videoPlayer.currentTime;
-
-    // // Capture the base64 image data (you need to define the logic for this)
-    // const imageBase64Data =
-    //   this.CaptureFrameImage(); /* Capture the image data from the video player */
-
-    // // Create the Snapshot reaction data
-    // const snapshotReactionData = {
-    //   videoId,
-    //   type: 'snapshot',
-    //   timeframe: currentTime,
-    //   dataUri: imageBase64Data,
-    // };
-
-    // // Make a POST request to save the Snapshot reaction
-    // this.videoService
-    //   .addReaction(videoId, snapshotReactionData)
-    //   .subscribe(() => {
-    //     // After successfully adding the reaction, refresh the video details
-    //     this.fetchVideoReactions();
-    //   });
   }
 
-  CaptureFrameImage() {
-    // Get the video element by its ID
-    const video = document.getElementById('video-element') as HTMLVideoElement;
-
+  // Capture Frame Image as a Bse64
+  CaptureFrameImage(video: any) {
     // Create a canvas element
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
@@ -129,7 +117,7 @@ export class VideoDetailComponent {
     canvas.height = video.videoHeight;
 
     // Draw the current frame of the video onto the canvas
-    //ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    ctx?.drawImage(video, 0, 0, canvas.width, canvas.height);
 
     // Get the image data as base64
     const imageBase64Data = canvas.toDataURL('image/png');
