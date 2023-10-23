@@ -8,7 +8,7 @@
       <app-camera-icon fill="fill-caption" class=""></app-camera-icon>
       <p>{{ reaction.timeframe | timeframeFormat }}</p>
     </div>
-    <div class="flex">
+    <div class="flex px-2">
       <p class="text-caption">
         {{ reaction.author.name }} created a snapshot ({{
           reaction.createdDate | date : "dd/mm/yy"
@@ -29,7 +29,7 @@
       <app-star-icon fill="fill-caption" class=""></app-star-icon>
       <p>{{ reaction.timeframe | timeframeFormat }}</p>
     </div>
-    <div class="flex">
+    <div class="flex px-2">
       <p class="text-caption">
         {{ reaction.author.name }} starred the video ({{
           reaction.postedDate | date : "dd/mm/yy"

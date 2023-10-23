@@ -6,8 +6,8 @@ module.exports = {
       colors: {
         white: "#ffffff",
         black: "#000000",
-        navbar: "#12123D",
         graybg: "#EFEFEF",
+        navbar: "#12123D",
         border: "#CCCCCC",
         object: "#12123D",
         caption: "#8D8D8D",
