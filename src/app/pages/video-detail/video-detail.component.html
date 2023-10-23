@@ -25,6 +25,7 @@
         class="mr-2 my-2"
       ></app-reaction-button>
       <app-reaction-button
+        (click)="createStarReaction()"
         label="Star"
         icon="assets/star-icon.svg"
         class="mr-2 my-2"
@@ -40,7 +41,7 @@
     <div *ngFor="let reaction of videoReactions">
       <app-video-reaction
         [reaction]="reaction"
-        (click)="GoToFrame(reaction)"
+        (click)="GoToFrame(reaction.timeframe)"
         class="cursor-pointer"
       ></app-video-reaction>
     </div>

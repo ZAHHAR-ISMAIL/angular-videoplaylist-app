@@ -2,7 +2,6 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RouteService } from 'src/app/Services/route.service';
 import { VideoService } from 'src/app/Services/video.service';
-import { Author } from 'src/app/models/author.model';
 import { VideoReaction } from 'src/app/models/video-reaction.model';
 import { Video } from 'src/app/models/video.model';
 
@@ -126,8 +125,17 @@ export class VideoDetailComponent {
   }
 
   // Play the video on the reaction selected timeframe
-  GoToFrame(reaction: VideoReaction) {
-    console.log(reaction.timeframe);
+  GoToFrame(timeframe: number) {
+    const video = this.videoPlayer.nativeElement;
+    video.pause();
+    video.currentTime = timeframe;
+
+    // Smooth scroll to the top (video)
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
   }
 
   // toggleVideo(event: any) {
