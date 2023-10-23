@@ -1,13 +1,17 @@
 <div class="pt-14 px-4 lg:px-24 xl:px-80 flex flex-col">
   <!-- Video Title  -->
+  <app-title-skeleton-loader *ngIf="isLoading"></app-title-skeleton-loader>
   <app-video-title
+    *ngIf="!isLoading"
     [videoId]="video.id"
     [videoTitle]="video.title"
     [authorId]="video.author.id"
   ></app-video-title>
   <!-- Video Player -->
+
   <video
     #videoPlayer
+    *ngIf="!isLoading"
     crossOrigin="anonymous"
     [src]="video.url"
     controls
@@ -32,7 +36,13 @@
       ></app-reaction-button>
     </div>
     <!-- Video author -->
-    <app-video-author [author]="video.author"></app-video-author>
+    <app-profile-skeleton-loader
+      *ngIf="isLoading"
+    ></app-profile-skeleton-loader>
+    <app-video-author
+      *ngIf="!isLoading"
+      [author]="video.author"
+    ></app-video-author>
   </div>
 
   <!-- List the video Reactions -->

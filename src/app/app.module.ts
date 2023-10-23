@@ -18,6 +18,8 @@ import { VideoReactionComponent } from './components/video-reaction/video-reacti
 import { CameraIconComponent } from './components/ui/icons/camera-icon/camera-icon.component';
 import { StarIconComponent } from './components/ui/icons/star-icon/star-icon.component';
 import { TimeframeFormatPipe } from './pipes/timeframe-format.pipe';
+import { TitleSkeletonLoaderComponent } from './components/ui/skeleton/title-skeleton-loader/title-skeleton-loader.component';
+import { ProfileSkeletonLoaderComponent } from './components/ui/skeleton/profile-skeleton-loader/profile-skeleton-loader.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { TimeframeFormatPipe } from './pipes/timeframe-format.pipe';
     CameraIconComponent,
     StarIconComponent,
     TimeframeFormatPipe,
+    TitleSkeletonLoaderComponent,
+    ProfileSkeletonLoaderComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

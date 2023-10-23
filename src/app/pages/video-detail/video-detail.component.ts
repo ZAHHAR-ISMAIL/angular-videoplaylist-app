@@ -11,13 +11,13 @@ import { Video } from 'src/app/models/video.model';
 })
 export class VideoDetailComponent {
   @ViewChild('videoPlayer')
-  private videoPlayer!: ElementRef;
+  private videoPlayer!: ElementRef; // video HTML element
 
-  videoId!: string;
-  // video: Video = { author: {} } as Video;
-  video!: Video;
+  videoId!: string; // video id from route param
+  video!: Video; // video data
+  isLoading: boolean = true; // check if video data fetched
 
-  videoReactions!: VideoReaction[];
+  videoReactions!: VideoReaction[]; // List video reactions
 
   constructor(
     private route: ActivatedRoute,
@@ -37,9 +37,12 @@ export class VideoDetailComponent {
       this.videoService.getVideoDetails(this.videoId).subscribe({
         next: (video: Video) => {
           this.video = video;
-          console.log(video);
+          this.isLoading = false;
         },
-        error: (err) => console.log(err),
+        error: (err) => {
+          console.log(err);
+          this.isLoading = false;
+        },
       });
     });
 
@@ -58,8 +61,6 @@ export class VideoDetailComponent {
           // Convert the date strings to Date objects and explicitly cast to number
           return +new Date(dateB) - +new Date(dateA);
         });
-
-        console.log(this.videoReactions);
       },
       // Handle Error
       error: (err) => console.log(err),
