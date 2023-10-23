@@ -7,7 +7,7 @@ import { VideoPreview } from 'src/app/models/video-preview.model';
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   videos: VideoPreview[] = []; // videos (preview) data
 
   constructor(

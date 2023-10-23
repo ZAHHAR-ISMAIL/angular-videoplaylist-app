@@ -1,0 +1,40 @@
+<!-- Diplay snapshot reaction if type is snapshot -->
+<div
+  *ngIf="reaction.type == 'snapshot'"
+  class="pl-4 pr-2 md:h-16 my-4 flex md:flex-row items-center hover:bg-graybg"
+>
+  <div class="flex flex-1 items-center gap-3 md:gap-12">
+    <div class="md:flex gap-5 items-center">
+      <app-camera-icon fill="fill-caption" class=""></app-camera-icon>
+      <p>{{ reaction.timeframe | timeframeFormat }}</p>
+    </div>
+    <div class="flex px-2">
+      <p class="text-caption">
+        {{ reaction.author.name }} created a snapshot ({{
+          reaction.createdDate | date : "dd/mm/yy"
+        }})
+      </p>
+    </div>
+  </div>
+  <img [src]="reaction.imageUrl" class="w-24 h-14 rounded-md justify-end" />
+</div>
+
+<!-- Diplay star reaction if type is star -->
+<div
+  *ngIf="reaction.type == 'star'"
+  class="pl-4 pr-2 md:h-16 my-4 flex md:flex-row items-center hover:bg-graybg"
+>
+  <div class="flex flex-1 items-center gap-3 md:gap-12">
+    <div class="md:flex gap-5 items-center">
+      <app-star-icon fill="fill-caption" class=""></app-star-icon>
+      <p>{{ reaction.timeframe | timeframeFormat }}</p>
+    </div>
+    <div class="flex px-2">
+      <p class="text-caption">
+        {{ reaction.author.name }} starred the video ({{
+          reaction.postedDate | date : "dd/mm/yy"
+        }})
+      </p>
+    </div>
+  </div>
+</div>

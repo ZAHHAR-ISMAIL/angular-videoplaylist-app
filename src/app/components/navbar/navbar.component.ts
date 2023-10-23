@@ -5,7 +5,7 @@ import { RouteService } from 'src/app/Services/route.service';
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
   isVideoDetailsPage: boolean = false;
 
   constructor(private routeService: RouteService) {}

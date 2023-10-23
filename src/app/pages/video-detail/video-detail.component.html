@@ -1,28 +1,59 @@
 <div class="pt-14 px-4 lg:px-24 xl:px-80 flex flex-col">
   <!-- Video Title  -->
+  <app-title-skeleton-loader *ngIf="isLoading"></app-title-skeleton-loader>
   <app-video-title
+    *ngIf="!isLoading"
     [videoId]="video.id"
     [videoTitle]="video.title"
     [authorId]="video.author.id"
   ></app-video-title>
   <!-- Video Player -->
-  <video [src]="video.url" controls class="pt-6 w-full"></video>
 
+  <video
+    #videoPlayer
+    *ngIf="!isLoading"
+    crossOrigin="anonymous"
+    [src]="video.url"
+    controls
+    preload="auto"
+    class="pt-6 w-full"
+  ></video>
+
+  <!-- Video Reaction Buttons -->
   <div class="pt-4 flex items-center">
-    <!-- Video Reaction Buttons -->
     <div class="flex-1">
       <app-reaction-button
+        (click)="createSnapshotReaction()"
         label="Snapshot"
         icon="assets/camera-icon.svg"
-        class="m-2"
+        class="mr-2 my-2"
       ></app-reaction-button>
       <app-reaction-button
+        (click)="createStarReaction()"
         label="Star"
         icon="assets/star-icon.svg"
-        class="m-2"
+        class="mr-2 my-2"
       ></app-reaction-button>
     </div>
     <!-- Video author -->
-    <app-video-author [author]="video.author"></app-video-author>
+    <app-profile-skeleton-loader
+      *ngIf="isLoading"
+    ></app-profile-skeleton-loader>
+    <app-video-author
+      *ngIf="!isLoading"
+      [author]="video.author"
+    ></app-video-author>
+  </div>
+
+  <!-- List the video Reactions -->
+  <div class="my-8">
+    <p class="pb-3 text-body font-bold">Reactions</p>
+    <div *ngFor="let reaction of videoReactions">
+      <app-video-reaction
+        [reaction]="reaction"
+        (click)="GoToFrame(reaction.timeframe)"
+        class="cursor-pointer"
+      ></app-video-reaction>
+    </div>
   </div>
 </div>
